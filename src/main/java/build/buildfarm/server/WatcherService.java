@@ -84,6 +84,11 @@ public class WatcherService extends WatcherGrpc.WatcherImplBase {
             // we terminate the connection when no further changes
             // would occur, or the operation is unknown
             if (operation == null || operation.getDone()) {
+              System.out.println("Sleep 4000");
+              try {
+                Thread.sleep(4000);
+              } catch (InterruptedException e) { }
+              System.out.println("Done sleeping");
               responseObserver.onCompleted();
             }
           } catch (StatusRuntimeException ex) {
